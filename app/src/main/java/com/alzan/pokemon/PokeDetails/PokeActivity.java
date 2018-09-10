@@ -106,8 +106,6 @@ public class PokeActivity extends AppCompatActivity {
     }
 
     public void getJSON(String url) {
-        Log.d("NAME JSON", url);
-
         RequestQueue queue = Volley.newRequestQueue(this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -300,13 +298,11 @@ public class PokeActivity extends AppCompatActivity {
                     public void onResponse(final Bitmap response) {
                         progressBarMainImage.setVisibility(View.GONE);
                         mainImage.setImageBitmap(response);
-                        Log.e("IMAGE_REQUEST_OK", response.toString());
                     }
                 }, 0, 0, ImageView.ScaleType.CENTER_INSIDE, null, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Log.e("IMAGE_REQUEST_ERROR", error.toString());
                     }
                 });
 
@@ -328,8 +324,6 @@ public class PokeActivity extends AppCompatActivity {
 
                 String name = typeJSON.getString("name");
                 String base_stat = object.getString("base_stat");
-
-                Log.d("BASE_STAT", base_stat);
 
 
                 switch (name) {

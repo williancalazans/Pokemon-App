@@ -74,7 +74,6 @@ public class TypeFragment extends Fragment {
 
     public void getJSON(final int start, final int end) {
         String url = "https://pokeapi.co/api/v2/type/";
-        Log.d("NAME JSON", url);
 
         queue = Volley.newRequestQueue(getActivity());
 
@@ -134,7 +133,6 @@ public class TypeFragment extends Fragment {
                 typeItems.setUrl(url);
 
                 try {
-                    Log.d("NAME JSON", url);
 
                     RequestQueue queue = Volley.newRequestQueue(getActivity());
 
@@ -155,7 +153,6 @@ public class TypeFragment extends Fragment {
                                             String name = pokemon.isNull("name") ? null : pokemon.getString("name");
                                             typeItems.setImage(name);
 
-                                            Log.d("TYPEITEMS", name);
                                         }
                                     } catch (Exception ex) {
                                     }
@@ -170,10 +167,6 @@ public class TypeFragment extends Fragment {
                     queue.add(stringRequest);
                 } catch (Exception ex) {
                 }
-
-                Log.d("NAME JSON", name);
-
-
                 items.add(typeItems);
             }
 

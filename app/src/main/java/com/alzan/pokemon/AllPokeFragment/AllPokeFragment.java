@@ -71,7 +71,6 @@ public class AllPokeFragment extends Fragment {
             String urlBundle = getArguments().getString("url");
 
             if (name != null && urlBundle != null) {
-                Log.d("NAME AND URL", name + " " + urlBundle);
                 getDataJsonByType(urlBundle, 1);
                 url = urlBundle;
                 control = 1;
@@ -93,8 +92,6 @@ public class AllPokeFragment extends Fragment {
 
     public void getJSON(final String url, final int control) {
 
-        Log.d("NAME JSON", url);
-
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -103,11 +100,9 @@ public class AllPokeFragment extends Fragment {
                     public void onResponse(String response) {
                         if (control == 1) {
                             getDataJsonByType(response, control);
-                            Log.d("GETDATAJSON", url);
 
                         } else if (control == 0) {
                             getDataJson(response, control);
-                            Log.d("GETDATAJSON", url);
 
                         }
                     }
@@ -129,11 +124,7 @@ public class AllPokeFragment extends Fragment {
 
     public void getDataJson(String response, int control) {
 
-        Log.d("GETDATAJSON", response.toString());
-
         try {
-
-
             JSONObject jsonObject = new JSONObject(response);
             JSONArray jsonArray = jsonObject.getJSONArray("results");
 
@@ -151,8 +142,6 @@ public class AllPokeFragment extends Fragment {
                 String url = object.isNull("url") ? null : object.getString("url");
                 pokeItems.setUrl(url);
 
-                Log.d("NAME JSON", name);
-
                 items.add(pokeItems);
             }
 
@@ -167,8 +156,6 @@ public class AllPokeFragment extends Fragment {
     }
 
     public void getDataJsonByType(String response, int control) {
-
-        Log.d("getDataJsonByType", response.toString());
 
         try {
             items.clear();
@@ -189,8 +176,6 @@ public class AllPokeFragment extends Fragment {
 
                 String url = pokemon.isNull("url") ? null : pokemon.getString("url");
                 pokeItems.setUrl(url);
-
-                Log.d("NAME JSON", name);
 
                 items.add(pokeItems);
 

@@ -107,8 +107,6 @@ public class SearchActivity extends AppCompatActivity {
                 String url = object.isNull("url") ? null : object.getString("url");
                 searchItems.setUrl(url);
 
-                Log.d("NAME JSON", name);
-
                 if (name.contains(itemSearch)) {
                     items.add(searchItems);
                 }
